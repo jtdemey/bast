@@ -1,0 +1,22 @@
+{
+  "name": "bast",
+  "version": "1.0.0",
+  "description": "Bel Air Strong Towns",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "John Torsten",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^10.0.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs-extra": "^11.2.0",
+    "morgan": "^1.10.0",
+    "nanoid": "^5.0.7",
+    "winston": "^3.13.0"
+  }
+}
