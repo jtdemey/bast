@@ -6,6 +6,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "start": "node src/server/server.js",
     "test": "echo \"Hey dude\" && exit 1"
   },
   "author": "John Torsten",

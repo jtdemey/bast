@@ -27,10 +27,13 @@ const sendHtmlFile = (res, fileName) => {
 
 const routeHtml = (endpoint, fileName = undefined) =>
   router.route(endpoint).get((_, res) => {
+    res.redirect("https://johntorsten.com/bast");
+    /*
     sendHtmlFile(
       res,
       `${fileName ? fileName : endpoint.replace("/", "")}.html`,
     );
+    */
   });
 
 ROUTES.forEach((route) =>
