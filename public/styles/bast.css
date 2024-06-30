@@ -147,7 +147,7 @@ $dark-moss-green: #5d5a0b;
 */
 
 html, body {
-  background: hsl(41, 12%, 8%);
+  background: hsl(41, 8%, 8%);
 }
 
 .invisible {
@@ -159,7 +159,7 @@ html, body {
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  background: hsl(41, 12%, 8%);
+  background: hsl(41, 8%, 8%);
 }
 
 main {
