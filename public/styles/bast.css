@@ -159,7 +159,7 @@ html, body {
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  background: hsl(41, 8%, 8%);
+  background: url("/img/img3.webp");
 }
 
 main {
