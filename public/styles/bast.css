@@ -146,8 +146,14 @@ $bistre: #251a03;
 $dark-moss-green: #5d5a0b;
 */
 
-html, body {
+html,
+body {
   background: hsl(41, 8%, 8%);
+}
+
+body {
+  background: url("/img/img3.webp") no-repeat fixed center;
+  background-size: 100% auto;
 }
 
 .invisible {
@@ -159,7 +165,12 @@ html, body {
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  background: url("/img/img3.webp");
+  background: linear-gradient(
+    120deg,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0)
+  );
 }
 
 main {
@@ -196,7 +207,8 @@ header {
   text-align: center;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: hsl(58, 79%, 85%);
   font-family: "YesevaOne";
   font-size: 2.5rem;
@@ -207,7 +219,8 @@ h2 {
   font-size: 2rem;
 }
 
-h3, h4 {
+h3,
+h4 {
   color: hsl(58, 79%, 85%);
   font-family: "YesevaOne";
   font-size: 2.5rem;

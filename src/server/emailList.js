@@ -6,7 +6,7 @@ const MAX_LENGTH = 254;
 const MAX_RECORDS = 12000;
 export const TEST_EMAIL = "grimace@mcdonaldswifi.net";
 
-const makeResponse = (response, isError) => ({ isError, response });
+const makeResponse = (response, status) => ({ response, status });
 
 const createSchema = (database) => {
   database.exec(`CREATE TABLE IF NOT EXISTS unverified_list (
@@ -40,14 +40,14 @@ export const createEmailList = (
   // SUBSCRIBE
   router.route(subscribeEndpoint).post((req, res) => {
     if (!req.body?.email || validateMaxLength(req.body.email)) {
-      res.status(400).json(makeResponse("INVALID_EMAIL", true));
+      res.status(400).json(makeResponse("INVALID_EMAIL", 400));
       return;
     }
     const incomingEmail = req.body.email;
 
     const emailRegex = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/gm;
     if (!emailRegex.test(incomingEmail)) {
-      res.status(400).json(makeResponse("INVALID_EMAIL", true));
+      res.status(400).json(makeResponse("INVALID_EMAIL", 400));
       return;
     }
 
@@ -56,7 +56,7 @@ export const createEmailList = (
     );
     const matchingEmail = getMatchingRecords.get(incomingEmail);
     if (matchingEmail) {
-      res.status(400).json(makeResponse("REDUNDANT_EMAIL", true));
+      res.status(400).json(makeResponse("REDUNDANT_EMAIL", 400));
       return;
     }
 
@@ -66,7 +66,7 @@ export const createEmailList = (
     );
     const allRecords = countRecords.all();
     if (allRecords.length > MAX_RECORDS) {
-      res.status(500).json(makeResponse("OVERLOADED", true));
+      res.status(500).json(makeResponse("OVERLOADED", 500));
       return;
     }
 
@@ -74,25 +74,22 @@ export const createEmailList = (
       "INSERT INTO unverified_list (email, verification_code) VALUES (?, ?)",
     );
     insertRecord.run(incomingEmail, nanoid(48));
-    res.status(200).json(makeResponse("SUBSCRIBE", false));
+    res.status(200).json(makeResponse("SUBSCRIBE", 200));
   });
 
   // UNSUBSCRIBE
   router.route(unsubscribeEndpoint).get((req, res) => {
     if (!req.query?.unsubscribe_code) {
-      res.status(400).json(makeResponse("INVALID_UNSUBSCRIBE", true));
+      res.status(400).json(makeResponse("INVALID_UNSUBSCRIBE", 400));
     }
 
-    res.status(200).json({
-      isError: false,
-      response: "UNSUBSCRIBE",
-    });
+    res.status(200).json(makeResponse("UNSUBSCRIBE", 200));
   });
 
   // VERIFY
   router.route(verifyEndpoint).get((req, res) => {
     if (!req.query?.email || !req.query?.verification_code) {
-      res.status(400).json(makeResponse("INVALID_VERIFICATION", true));
+      res.status(400).json(makeResponse("INVALID_VERIFICATION", 400));
       return;
     }
 
@@ -102,7 +99,7 @@ export const createEmailList = (
     );
     const matchingVerificationCode = getVerificationCode.run(req.query.email);
     if (!matchingVerificationCode) {
-      res.status(400).json(makeResponse("INVALID_VERIFICATION", true));
+      res.status(400).json(makeResponse("INVALID_VERIFICATION", 400));
       return;
     }
 
@@ -111,11 +108,11 @@ export const createEmailList = (
     );
     const alreadyVerifiedRecord = checkVerifiedRecords.run(req.query.email);
     if (alreadyVerifiedRecord) {
-      res.status(400).json(makeResponse("REDUNDANT_VERIFICATION", true));
+      res.status(400).json(makeResponse("REDUNDANT_VERIFICATION", 400));
       return;
     }
 
-    res.status(200).json(makeResponse("VERIFY", false));
+    res.status(200).json(makeResponse("VERIFY", 200));
   });
 
   logger.info(`Email list enabled (using ${dbName}.db)`);

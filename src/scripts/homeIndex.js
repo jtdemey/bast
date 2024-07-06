@@ -1,4 +1,5 @@
-const URI = "https://belairstrongtowns.org";
+// const URI = "https://belairstrongtowns.org";
+const URI = "http://localhost:3001";
 
 function showError(text) {
   const errorArea = document.getElementById("error");
@@ -22,8 +23,8 @@ function subscribe(e) {
   })
     .then((res) => {
       res.json().then((body) => {
+        console.log(body);
         if (res.status === 400) {
-          console.log(body);
           if (body.response === "REDUNDANT_EMAIL") {
             showError("You're already registered; check your spam for the verification email.");
           } else {

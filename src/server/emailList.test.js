@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { TEST_EMAIL } from "./emailList";
 
-const PORT = 3000;
+const PORT = 3001;
 const BASE_URI = `http://localhost:${PORT}/`;
 
-const makeRequest = (options) => fetch(`${BASE_URI}bast/subscribe`, options);
+const makeRequest = (options) => fetch(`${BASE_URI}subscribe`, options);
 
 describe("subscribing", () => {
   it("should reject missing input", async () => {
@@ -14,7 +14,7 @@ describe("subscribing", () => {
     });
     expect(response.status).toBe(400);
     const jsonResponse = await response.json();
-    expect(jsonResponse.isError).toBe(true);
+    expect(jsonResponse.status).toBe(400);
     expect(jsonResponse.response).toBe("INVALID_EMAIL");
   });
 
@@ -27,7 +27,7 @@ describe("subscribing", () => {
     });
     expect(response.status).toBe(400);
     const jsonResponse = await response.json();
-    expect(jsonResponse.isError).toBe(true);
+    expect(jsonResponse.status).toBe(400);
     expect(jsonResponse.response).toBe("INVALID_EMAIL");
   });
 
@@ -40,11 +40,11 @@ describe("subscribing", () => {
     });
     expect(response.status).toBe(400);
     const jsonResponse = await response.json();
-    expect(jsonResponse.isError).toBe(true);
+    expect(jsonResponse.status).toBe(400);
     expect(jsonResponse.response).toBe("INVALID_EMAIL");
   });
 
-  it("should reject bogus email", async () => {
+  it("should reject bad email format", async () => {
     const response = await makeRequest({
       method: "POST",
       body: JSON.stringify({
@@ -53,7 +53,7 @@ describe("subscribing", () => {
     });
     expect(response.status).toBe(400);
     const jsonResponse = await response.json();
-    expect(jsonResponse.isError).toBe(true);
+    expect(jsonResponse.status).toBe(400);
     expect(jsonResponse.response).toBe("INVALID_EMAIL");
   });
 
@@ -69,7 +69,7 @@ describe("subscribing", () => {
     });
     expect(response.status).toBe(200);
     const jsonResponse = await response.json();
-    expect(jsonResponse.isError).toBe(false);
+    expect(jsonResponse.status).toBe(200);
     expect(jsonResponse.response).toBe("SUBSCRIBE");
   });
 });
