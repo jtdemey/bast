@@ -26,7 +26,7 @@ function subscribe(e) {
         console.log(body);
         if (res.status === 400) {
           if (body.response === "REDUNDANT_EMAIL") {
-            showError("You're already registered; check your spam for the verification email.");
+            showError("You're already registered; we'll send your verification email as soon as we can! Check your spam.");
           } else {
             showError("Please enter a valid email address.");
           }

@@ -242,6 +242,10 @@ article > ul {
   list-style-type: square;
 }
 
+blockquote {
+  padding: 24px;
+}
+
 #error {
   margin: 12px 0px;
   padding: 12px;
