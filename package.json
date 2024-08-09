@@ -6,6 +6,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "list-unverified": "node src/scripts/listUnverified.js",
+    "list-verified": "node src/scripts/listVerified.js",
     "start": "node src/server/server.js",
     "test": "vitest run"
   },

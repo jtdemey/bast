@@ -152,8 +152,8 @@ body {
 }
 
 body {
-  background: url("/img/img3.webp") no-repeat fixed center;
-  background-size: 100% auto;
+  background: url("/img/img3.webp") no-repeat fixed 78% 50%;
+  background-size: auto;
 }
 
 .invisible {
@@ -168,8 +168,8 @@ body {
   background: linear-gradient(
     120deg,
     rgba(0, 0, 0, 0.9),
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0)
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.4)
   );
 }
 
@@ -192,7 +192,7 @@ a:hover {
 nav > ul {
   display: flex;
   justify-content: space-around;
-  padding: 16px;
+  padding: 0px 16px 16px;
   font-family: "JosefinSans";
   font-size: 24px;
   list-style-type: none;
@@ -200,6 +200,14 @@ nav > ul {
 
 nav > ul > a {
   text-decoration: none;
+}
+
+nav > ul > a > li {
+  padding-top: 16px;
+}
+
+.link {
+  padding-top: 16px;
 }
 
 header {
@@ -211,8 +219,12 @@ h1,
 h2 {
   color: hsl(58, 79%, 85%);
   font-family: "YesevaOne";
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   line-height: 4rem;
+}
+
+h1 {
+  font-size: 3.8rem;
 }
 
 h2 {
@@ -244,6 +256,13 @@ article > ul {
 
 blockquote {
   padding: 24px;
+  background: hsla(58, 9%, 3%, 0.5);
+  border-radius: 6px;
+}
+
+cite {
+  display: block;
+  padding: 6px 0px 0px;
 }
 
 #error {
@@ -272,6 +291,13 @@ input {
   cursor: pointer;
 }
 
+.event-article {
+  background: rgba(61, 61, 51, 0.5);
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 4px 4px 6px black;
+}
+
 .event-header {
   margin: 12px 0px;
 }
@@ -298,6 +324,11 @@ input {
 }
 
 @media all and (min-width: 701px) {
+  body {
+    background: url("/img/img3.webp") no-repeat fixed center;
+    background-size: 100% auto;
+  }
+
   header {
     text-align: left;
   }
@@ -308,5 +339,14 @@ input {
 
   h2 {
     font-size: 3rem;
+  }
+
+  #site-wrapper {
+    background: linear-gradient(
+      120deg,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0)
+    );
   }
 }
