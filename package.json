@@ -8,7 +8,7 @@
     "dev": "vite",
     "list-unverified": "node src/scripts/listUnverified.js",
     "list-verified": "node src/scripts/listVerified.js",
-    "start": "node src/server/server.js",
+    "start": "NODE_ENV=production node src/server/server.js",
     "test": "vitest run"
   },
   "author": "John Torsten",

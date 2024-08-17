@@ -10,7 +10,7 @@ import { createEmailList } from "./emailList.js";
 dotenv.config();
 
 const dev = process.env.NODE_ENV !== "production";
-const port = process.env.SERVER_PORT || 3000;
+const port = process.env.SERVER_PORT || 3001;
 process.on("SIGINT", () => process.exit());
 
 try {
