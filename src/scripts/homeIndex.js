@@ -1,5 +1,5 @@
-// const URI = "https://belairstrongtowns.org";
-const URI = "http://localhost:3001";
+// const URI = "http://localhost:3001";
+const URI = "https://belairstrongtowns.org";
 
 function showError(text) {
   const errorArea = document.getElementById("error");
